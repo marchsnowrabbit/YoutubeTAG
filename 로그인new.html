@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+    <link rel="stylesheet" href="로그인new.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <span>Blo0m </span>
+            <span>Youtube</span>
+            <span>Studies</span>
+        </a>
+        <nav>
+            <a href="guide.html">Guides</a>
+            <a href="search.html">Search</a>
+            <a href="mypage.html">My profile</a>
+            <div class="dropdown-container">
+                <a href="#" class="classing">Classing</a>
+                <div class="dropdown">
+                    <a href="#">Learning Video</a>
+                    <a href="#">Learned Video</a>
+                </div>
+            </div>
+        </nav>
+        <div class="auth">
+            <div class="language-container">
+                <a href="#" class="language">Language</a>
+                <div class="language-dropdown">
+                    <a href="/로그인한국어.html">Korean</a>
+                    <a href="#">English</a>
+                
+                </div>
+            </div>
+            <a href="로그인.html">Login</a>
+            <a href="회원가입.html">Sign up</a>
+        </div>
+    </header>
+    <hr>
+    <div class="container">
+        <h1>Login</h1>
+        <div class="description-container">
+            <div id="description"> 로그인을 하고 당신을 위한 맞춤서비스를 이용해 보세요 </div>
+            
+            <hr id="hr-green">
+        </div>
+
+        <ul class="links">
+            <li>
+                <a href="로그인.html" id="ID">ID :</a>
+            </li>
+            <li>
+                <a href="회원가입.html" id="PassWord">PassWord :</a>
+            </li>
+        </ul>
+        <form action="" method="post">
+            <div class="first-input input__block first-input__block">
+
+                <input type="id" placeholder="id" class="input" id="id" />
+            </div>
+
+            <div class="input__block">
+                <input type="password" placeholder="Password" class="input" id="password" />
+            </div>
+           
+            <div class="input__block">
+                <input type="password" placeholder="Repeat password" class="input repeat__password" id="repeat__password" />
+            </div>
+            
+            <div class="password-links">
+                <a href="./회원가입new.html" id="find-signup">가입하기 |</a>
+                <a href="./아이디찾기.html" id="find-id-link">아이디 찾기 |</a>
+                <a href="#" id="find-password-link">비밀번호 찾기</a>
+            </div>
+            <button class="signin__btn">Login</button>
+        </form>
+       
+<!--        
+        <div class="separator">
+            <p>SIGN IN WITH</p>
+        </div>
+
+        <button class="google__btn">
+            <i class="fa fa-google"></i>
+            Sign in with Google
+        </button>
+        <button class="github__btn">
+            <i class="fa fa-github"></i>
+            Sign in with GitHub
+        </button>
+    </div> -->
+
+    <!-- Find ID Modal -->
+   
+
+    <script>
+        $(document).ready(function() {
+            // 세션을 통해 로그인 상태를 확인
+            $.get('/check-session', function(response) {
+                if (response.loggedIn) {
+                    $('.login-link').hide();
+                    $('.signup-link').hide();
+                    $('.logout-link').show();
+                } else {
+                    $('.login-link').show();
+                    $('.signup-link').show();
+                    $('.logout-link').hide();
+                }
+            });
+
+            $('.signin__btn').on('click', function(e) {
+                e.preventDefault();
+
+                const email = $('#email').val();
+                const password = $('#password').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/login',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ email: email, password: password }),
+                    success: function(response) {
+                        if (response.success) {
+                            alert('로그인 되었습니다.');
+                            window.location.href = 'index.html'; // 로그인 성공 후 메인 페이지로 이동
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function() {
+                        alert('아이디 또는 비밀번호가 일치하지 않습니다. 다시 시도해주세요.');
+                    }
+                });
+            });
+
+            $('.logout-link').on('click', function(e) {
+                e.preventDefault();
+                $.post('/logout', function(response) {
+                    if (response.success) {
+                        alert('로그아웃 되었습니다.');
+                        window.location.href = 'index.html';
+                    }
+                });
+            });
+
+           
+        });
+    </script>
+</body>
+</html>

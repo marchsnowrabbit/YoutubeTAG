@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>분석하기 </title>
+    <link rel="stylesheet" href="분석하기.css">
+
+
+    <!-- jQuery 라이브러리 로드 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <!-- 깃허브,구글 이미지 -->
+
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <span>Blo0m </span>
+            <span>Youtube</span>
+            <span>Studies</span>
+        </a>
+        <nav>
+            <a href="#">Guides</a>
+            <a href="search.html">Search</a>
+            <a href="#">My profile</a>
+            <div class="dropdown-container">
+                <a href="#" class="classing">Classing</a>
+                <div class="dropdown">
+                    <a href="#">Learning Video</a>
+                    <a href="#">Learned Video</a>
+                </div>
+            </div>
+        </nav>
+        <div class="auth">
+            <div class="language-container">
+                <a href="#" class="language">Language</a>
+                <div class="language-dropdown">
+                    <a href="#">Korean</a>
+                    <a href="#">English</a>
+                </div>
+            </div>
+            <a href="로그인2.html">Login</a>
+            <a href="회원가입2.html">Sign up</a>
+        </div>
+    </header>
+    <hr>
+    
+
+    <!--^ 콘테이너 -->
+    <div class="container">
+        <div class="analysis">
+            <div class="channel-name">
+                <p class="selectable" onclick="selectSection('Create')">Create : 240- 380</p>
+                <p class="selectable" onclick="selectSection('Evaluate')">Evaluate : 120- 180</p>
+                <p class="selectable" onclick="selectSection('Analyze')">Annalyze : 60-120</p>
+                <p class="selectable" onclick="selectSection('Apply')">Apply : 0-60</p>
+                <p class="selectable" onclick="selectSection('Understand')">Understand</p>
+                <p class="selectable" onclick="selectSection('Remember')">Remember</p>
+            </div>
+
+
+            
+            <div class="result">
+                <div class="box">
+
+                    
+                    
+                </div>
+
+
+
+
+
+
+                <div class="graph">
+                    <canvas id="resultGraph"></canvas>
+                </div>
+                
+                <div class="buttons">
+                    <button class="save-btn">나의 학습에 저장</button>
+                    <button class="close-btn">저장하지 않고 닫기</button>
+                </div>
+                
+            </div>
+            <div class="selected-section" id="selectedSection"></div>
+        </div>
+    </div><!--^ EOF 콘테이너 -->
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="분석하기.js"></script>
+</body>
+</html>

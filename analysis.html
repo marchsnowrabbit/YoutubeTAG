@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영상 페이지</title>
+    <link rel="stylesheet" href="analysis.css">
+</head>
+
+<body>
+    <header>
+        <div class="top-nav">
+            <div class="dropdown-container">
+                <a href="#" class="language">Language</a>
+                <div class="dropdown">
+                    <a href="#">Korean</a>
+                    <a href="#">English</a>
+                </div>
+            </div>
+            <a href="#" class="top-link">Login</a>
+            <a href="#" class="top-link">Sign up</a>
+        </div>
+        <div class="bottom-nav">
+            <div class="logo">로고</div>
+            <nav class="nav-left">
+                <a href="#" class="bottom-link">Guides</a>
+                <a href="search.html" class="bottom-link">Search</a>
+                <a href="#" class="bottom-link">My profile</a>
+                <div class="dropdown-container">
+                    <a href="#" class="classing">Classing</a>
+                    <div class="dropdown">
+                        <a href="#">Learning Video</a>
+                        <a href="learned.html">Learned Video</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="video-container">
+            <div class="video-thumbnail" id="video-thumbnail">
+                <img src="thumbnail.png" alt="유튜브 영상 썸네일" id="youtube-thumbnail">
+            </div>
+            <div class="video-controls" id="controls">
+                <div class="language-select">
+                    <span>영상 지원 언어 선택</span>
+                    <a href="#">한국어</a>
+                    <a href="#">영어</a>
+                </div>
+                <button class="btn btn-save" onclick="saveVideo()">학습할 영상에 저장</button>
+                <button class="btn btn-analyze" onclick="goToAnalysis()">분석하기</button>
+            </div>
+            <div class="keyword-section">
+                <h2>키워드(중복명사 보여주기)</h2>
+                <div class="keywords">
+                    <!-- 추후수정 -->
+                </div>
+                <div class="image-section">
+                    <!-- 추후수정 -->
+                </div>
+            </div>
+        </div>
+
+        <div class="popup" id="popup">
+            자막이 없습니다.
+            <button onclick="hidePopup()">닫기</button>
+        </div>
+
+        <div class="video-info">
+            <p>제목 | 조회수</p>
+            <p>채널명</p>
+        </div>
+    </main>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const videoId = 'SITE_VIDEO_ID'; // 사이트에서 사용하는 영상 ID
+    const youtubeVideoId = 'YOUTUBE_VIDEO_ID'; // 유튜브 영상 ID
+    const videoThumbnail = document.getElementById('youtube-thumbnail');
+    videoThumbnail.src = `https://img.youtube.com/vi/${youtubeVideoId}/hqdefault.jpg`; // 유튜브 썸네일 이미지 경로
+
+    // 저장된 학습 중 및 학습 완료된 영상 목록을 로드
+    const learningVideos = JSON.parse(localStorage.getItem('learningVideos')) || [];
+    const learnedVideos = JSON.parse(localStorage.getItem('learnedVideos')) || [];
+
+    // 학습할 영상에 저장
+    window.saveVideo = function() {
+        const video = {
+            id: videoId,
+            youtubeId: youtubeVideoId,
+            title: '영상 제목',
+            channel: '채널명'
+        };
+        learningVideos.push(video);
+        localStorage.setItem('learningVideos', JSON.stringify(learningVideos));
+        alert('영상이 학습 중인 목록에 저장되었습니다.');
+    };
+
+    // 학습 완료된 영상 저장
+    window.completeVideo = function() {
+        const video = {
+            id: videoId,
+            youtubeId: youtubeVideoId,
+            title: '영상 제목',
+            channel: '채널명'
+        };
+        learnedVideos.push(video);
+        localStorage.setItem('learnedVideos', JSON.stringify(learnedVideos));
+        alert('영상이 학습 완료된 목록에 저장되었습니다.');
+    };
+
+    // 분석 팝업 표시
+    window.showPopup = function() {
+        const hasData = true; // 데이터가 있다고 가정(추후 수정)
+
+        if (hasData) {
+            document.querySelector('.keyword-section').style.display = 'block';
+            document.querySelector('.image-section').style.display = 'block';
+            document.querySelector('.video-controls').style.display = 'none';
+            document.querySelector('.popup').style.display = 'none';
+
+            // 키워드 추가 (추후 수정)
+            const keywordsContainer = document.querySelector('.keywords');
+            keywordsContainer.innerHTML = '';
+            const keywords = ['#파이썬', '#코딩']; // 추후 수정
+            keywords.forEach(keyword => {
+                const keywordDiv = document.createElement('div');
+                keywordDiv.classList.add('keyword');
+                keywordDiv.textContent = keyword;
+                keywordsContainer.appendChild(keywordDiv);
+            });
+
+            // 이미지 추가 (추후 수정)
+            const imageContainer = document.querySelector('.image-section');
+            imageContainer.innerHTML = '';
+            const imageDiv = document.createElement('div');
+            imageDiv.classList.add('image');
+            const img = document.createElement('img');
+            img.src = 'bloo.png';
+            img.alt = "Bloom's Taxonomy Pyramid";
+            imageDiv.appendChild(img);
+            imageContainer.appendChild(imageDiv);
+        } else {
+            document.querySelector('.popup').style.display = 'block';
+        }
+    };
+
+    // 팝업 닫기
+    window.hidePopup = function() {
+        document.querySelector('.popup').style.display = 'none';
+    };
+});
+function goToAnalysis() {
+    window.location.href = "분석하기.html";
+}
+</script>
+</body>
+
+</html>

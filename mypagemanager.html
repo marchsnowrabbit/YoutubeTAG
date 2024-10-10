@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이 페이지</title>
+    <link rel="stylesheet" href="mypagemanager.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <span>Blo0m </span>
+            <span>Youtube</span>
+            <span>Studies</span>
+        </a>
+        <nav>
+            <a href="#">Guides</a>
+            <a href="search.html">Search</a>
+            <a href="#">My profile</a>
+            <div class="dropdown-container">
+                <a href="#" class="classing">Classing</a>
+                <div class="dropdown">
+                    <a href="#">Learning Video</a>
+                    <a href="#">Learned Video</a>
+                </div>
+            </div>
+        </nav>
+        <div class="auth">
+            <div class="language-container">
+                <a href="#" class="language">Language</a>
+                <div class="language-dropdown">
+                    <a href="index한국어.html">Korean</a>
+                    <a href="#">English</a>
+                </div>
+            </div>
+            <a href="로그인2.html">Login</a>
+            <a href="회원가입2.html">Sign up</a>
+        </div>
+    </header>
+    <hr>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#" onclick="showContent('dashboard')">대시보드</a></li>
+                <li><a href="#" onclick="showContent('designboard')">디자인보드</a></li>
+                <li><a href="#" onclick="showContent('usermanagement')">사용자 관리</a></li>
+                <li><a href="#" onclick="showContent('userlist')">사용자 목록</a></li>
+                <li><a href="#" onclick="showContent('sendmessage')">메시지 보내기</a></li>
+                <li><a href="#" onclick="showContent('adminsettings')">운영진 설정</a></li>
+                <li><a href="#" onclick="showContent('sendmail')">메일 발송 실행</a></li>
+                <li><a href="#" onclick="showContent('settings')">환경설정</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div id="dashboard" class="content-section">대시보드 내용</div>
+            <div id="designboard" class="content-section">디자인보드 내용</div>
+            <div id="usermanagement" class="content-section">
+                <div class="profile-header">
+                    <strong>편집 및 추가</strong>
+                    <button onclick="showContent('')" class="back-button">← </button>
+                </div>
+                <div class="profile-container">
+                    <div class="profile-box profile-left">
+                        <div class="profile-image">
+                            <img src="profile-image.png" alt="프로필 이미지">
+                        </div>
+                        <div class="profile-info">
+                            <p>회원 정보</p>
+                            <p>닉네임: 사용자 닉네임</p>
+                            <p>메일: example@mail.com</p>
+                            <p>비밀번호: *********</p>
+                        </div>
+                    </div>
+                    <div class="profile-box profile-right">
+                        <p>가입일: 2019-03-26 17:43</p>
+                        <p>로그인: (0회)</p>
+                        <p>게시물: 0개</p>
+                        <p>댓글: 0개</p>
+                        <p>구매: 0개</p>
+                        <p>문의: 0개</p>
+                        <p>적립금: 0 포인트</p>
+                    </div>
+                </div>
+            </div>
+            <div id="userlist" class="content-section">사용자 목록 내용</div>
+            <div id="sendmessage" class="content-section">메시지 보내기 내용</div>
+            <div id="adminsettings" class="content-section">운영진 설정 내용</div>
+            <div id="sendmail" class="content-section">메일 발송 실행 내용</div>
+            <div id="settings" class="content-section">환경설정 내용</div>
+        </div>
+    </div>
+    <script>
+    function showContent(sectionId) {
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => {
+            section.classList.remove('active');
+        });
+        if (sectionId) {
+            document.getElementById(sectionId).classList.add('active');
+        }
+    }
+    </script>
+</body>
+</html>

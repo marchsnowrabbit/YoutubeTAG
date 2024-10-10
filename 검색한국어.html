@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색 한국어</title>
+    <link rel="stylesheet" href="search.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index한국어.html" class="logo">
+            <span>Blo0m </span>
+            <span>Youtube</span>
+            <span>Studies</span>
+        </a>
+        <nav>
+            <a href="#">가이드</a>
+            <a href="검색한국어.html">검색</a>
+            <a href="#">나의 프로필</a>
+            <div class="dropdown-container">
+                <a href="#" class="classing">분류</a>
+                <div class="dropdown">
+                    <a href="#">학습중인 영상</a>
+                    <a href="#">학습한 영상</a>
+                </div>
+            </div>
+        </nav>
+        <div class="auth">
+            <div class="language-container">
+                <a href="#" class="language">언어</a>
+                <div class="language-dropdown">
+                    <a href="#">한국어</a>
+                    <a href="#">영어</a>
+                </div>
+            </div>
+            <a href="로그인한국어.html">로그인</a>
+            <a href="회원가입한국어.html">회원가입</a>
+        </div>
+    </header>
+    <hr>
+  
+
+    <main>
+        <div class="search-wrapper">
+            <h2 class="search-text">당신의 학습 도우미</h2>
+                <p class="prompt">(프로젝트 명)에게 물어보세요 :D</p>
+                    <div class="search-box">
+                        <form id="searchForm">
+                            <div class="search-input-container">
+                                <input type="text" id="searchText" class="search-input" placeholder="Search..." name="searchResult">
+                                    <button type="submit" class="search-button"> <img src="search-icon.png" alt="Search Icon" class="search-icon">
+                                    </button>
+                        </form>
+                            </div>
+                    </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const searchResult = document.getElementById('searchText').value;
+            window.location.href = `검색결과한국어.html?searchResult=${encodeURIComponent(searchResult)}`;
+        });
+    </script>
+    
+</body>
+</html>

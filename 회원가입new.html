@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="회원가입new.css">
+
+    <!-- jQuery 라이브러리 로드 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <header>
+      <a href="index.html" class="logo">
+          <span>Blo0m </span>
+          <span>Youtube</span>
+          <span>Studies</span>
+      </a>
+      <nav>
+          <a href="guide.html">Guides</a>
+          <a href="search.html">Search</a>
+          <a href="mypage.html">My profile</a>
+          <div class="dropdown-container">
+              <a href="#" class="classing">Classing</a>
+              <div class="dropdown">
+                  <a href="#">Learning Video</a>
+                  <a href="#">Learned Video</a>
+              </div>
+          </div>
+      </nav>
+      <div class="auth">
+          <div class="language-container">
+              <a href="#" class="language">Language</a>
+              <div class="language-dropdown">
+                  <a href="#">Korean</a>
+                  <a href="#">English</a>
+              </div>
+          </div>
+          <a href="로그인.html">Login</a>
+          <a href="회원가입.html">Sign up</a>
+      </div>
+  </header>
+  <hr>
+
+  <div class="container"> 
+      <h1>SIGN UP</h1>
+      <div class="description-container">
+          <div id="description">회원가입을 하고 당신을 위한 맞춤서비스를 이용해 보세요 </div>
+          <hr id="hr-green">
+
+      </div>
+      <ul class="links">
+          <li>
+              <!-- <a href="로그인.html" id="signin">SIGN UP</a> -->
+                    <div id="ID">ID :</div>
+          </li>
+          <li>
+                <div id="PassWord">PassWord :</div>
+              <!-- <a href="회원가입.html" id="signup">SIGN UP</a> -->
+          </li>
+            
+          <li>
+                <div id="Repeat-PassWord">Repeat PW :</div>
+            
+        </li>
+
+      </ul>
+
+      <!-- 회원가입 폼 -->
+      <form id="signupForm"> <!-- action과 method를 제거,id로 전환 -->
+                                    <!--^html에서 form으로보내는 id와 script에서 특정id의 동작이 같게  -->
+        <div class="first-input input__block first-input__block">
+            <input type="email" placeholder="Email" class="input" id="email" name="email" required />
+        </div>
+        <div class="input__block">
+            <input type="password" placeholder="Password" class="input" id="password" name="password" required />
+        </div>
+        <div class="input__block">
+            <input type="password" placeholder="Repeat password" class="input repeat__password" id="repeat__password" name="repeat_password" required />
+        </div>
+        <button class="signin__btn" type="submit">가입하기</button>
+      </form>
+
+      <!-- <div class="separator">
+          <p>SIGN IN WITH</p>
+      </div>
+      <button class="google__btn">
+          <i class="fa fa-google"></i>
+          Sign in with Google
+      </button>
+      <button class="github__btn">
+          <i class="fa fa-github"></i>
+          Sign in with GitHub
+      </button>
+  </div> -->
+
+  <script>
+    //^ 회원가입 폼 제출 처리 ->signupForm 으로 
+$('#signupForm').on('submit', function(e) {
+    e.preventDefault();  //^ 폼의 기본 동작(페이지 리로드)을 막음
+
+    const password = $('#password').val();
+    const repeat_password = $('#repeat__password').val();
+
+    //^ 비밀번호와 반복 비밀번호가 동일한지 확인
+    if (password !== repeat_password) {
+        alert('비밀번호를 동일하게 입력해주세요.');
+        return; // 동일하지 않으면 폼 제출 중단
+    }
+
+    const formData = {
+        email: $('#email').val(),
+        password: password,
+        repeat_password: repeat_password
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: '/signup',
+        data: JSON.stringify(formData), // 데이터를 JSON 문자열로 변환
+        contentType: 'application/json', // JSON 형식으로 데이터 전송
+        success: function(response) {
+            if (response.success) {
+                alert('회원가입에 성공했습니다!');
+                window.location.href = 'index.html'; // 회원가입 성공 후 index.html로 이동
+            } else {
+                alert(response.message || '회원가입에 실패했습니다. 다시 시도해주세요.');
+            }
+        },
+        error: function(xhr, status, error) {
+            // 서버로부터 받은 오류 메시지 출력
+            const errorMessage = xhr.responseJSON ? xhr.responseJSON.message : '이미 존재하는 아이디입니다.';
+            alert(errorMessage);
+        }
+    });
+});
+
+  </script>
+</body>
+</html>

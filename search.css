@@ -1,0 +1,249 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(108, 105, 105);
+    margin: 0;
+    min-height: 100vh;
+   
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+    position: relative;
+    
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(108, 105, 105);
+
+
+
+}
+
+
+
+header .logo {
+    margin-left: 10px;
+    color: #ffdf00;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header .logo span {
+    display: block;
+}
+
+/* ^ 헤더 나브  */
+
+header nav {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 50px;
+}
+
+header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+header .auth {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+header .auth a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* ^ 헤더 나브  */
+
+
+
+
+
+
+
+
+
+
+
+/** Dropdown styling */
+.language-container {
+    position: relative;
+}
+
+
+.language {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(108, 105, 105);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.language-dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+    font-size: 16px;
+}
+
+.language-container:hover .language-dropdown {
+    display: block;
+}
+
+
+
+
+
+
+nav a.classing:hover, nav a.language:hover {
+    color: #FCFFC2;
+}
+
+.dropdown-container {
+    position: relative;
+
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(108, 105, 105);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+}
+
+.dropdown-container:hover .dropdown {
+    display: block;
+}
+
+
+
+.search-wrapper {
+    margin-top : 500px;
+
+    text-align: center;
+    color: white;
+}
+
+.search-text {
+    font-size: 24px;
+    margin: 0;
+}
+
+.prompt {
+    font-size: 18px;
+    color: white;
+    margin: 5px 0;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.search-input-container {
+    position: relative;
+    width: 600px;
+    height: 40px;
+    display: flex;
+    margin-right: 20px; 
+
+}
+
+.search-input {             /*! 서치인풋 */
+
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 2px solid rgb(212, 99, 99);
+    border-radius: 40px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-button { /*^ 돋보기모양 버튼  */
+
+
+    background-color: rgb(108, 105, 105);
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    height: 65px;
+    width:4px;
+    border: none; 
+}
+
+
+
+.search-icon {        /*! 서치아이콘 길이  */
+
+    /*? 서치 아이콘 변경 해줘야함  */
+    width: 40px;
+    height: 60px;
+    background-color: white;
+    margin-left: 43px;                      /* 서치칸이랑 폭길이 수정  */
+    border-radius: 0 5px 5px 0;
+}
+
+
+
+
+.search-text {
+
+position:relative;
+bottom:350px;
+}
+
+
+
+.prompt {
+
+position:relative;
+bottom:350px;
+
+
+}
+.search-input-container {      /* 서치인풋 길이 */
+
+bottom:350px;
+width:700px;
+
+}
+
+

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색 결과</title>
+    <link rel="stylesheet" href="searchresult.css">
+</head>
+
+<body>
+
+
+    <header>
+        <a href="index한국어.html" class="logo">
+            <span>Blo0m </span>
+            <span>Youtube</span>
+            <span>Studies</span>
+        </a>
+        <nav>
+            <a href="#">가이드</a>
+            <a href="검색한국어.html">검색</a>
+            <a href="#">나의 프로필</a>
+            <div class="dropdown-container">
+                <a href="#" class="classing">분류</a>
+                <div class="dropdown">
+                    <a href="#">학습중인 영상</a>
+                    <a href="#">학습한 영상</a>
+                </div>
+            </div>
+        </nav>
+        <div class="auth">
+            <div class="language-container">
+                <a href="#" class="language">언어</a>
+                <div class="language-dropdown">
+                    <a href="index한국어.html">한국어</a>
+                    <a href="#">영어</a>
+                </div>
+            </div>
+            <a href="로그인한국어.html">로그인</a>
+            <a href="회원가입한국어.html">회원가입</a>
+        </div>
+    </header>
+    <hr>
+  
+  
+<main>
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="검색...">
+        <button class="search-btn"><img src="search-icon.png" alt="Search Icon" class="search-icon"></button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>썸네일</th>
+                <th>영상제목</th>
+                <th>영상길이</th>
+                <th>채널명</th>
+                <th>조회수</th>
+                <th>학습하기</th>
+            </tr>
+        </thead>
+        <tbody id="results">
+            <!-- 검색 결과 -->
+        </tbody>
+    </table>
+
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchResult = urlParams.get('searchResult');
+
+        if (searchResult) {
+            document.getElementById('search-input').value = searchResult;
+            fetchSearchResults(searchResult);
+        }
+
+        function fetchSearchResults(searchResult) {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';  
+            
+           //추후수정 필요
+            const sampleResults = [
+                {
+                    thumbnail: 'yellow',
+                    title: `파이썬으로 데이터 분석하기[1-1] (${searchResult})`, //수정
+                    duration: '20:30',
+                    channel: '마지막 코딩',
+                    views: '100,000'
+                },
+               // 추후수정
+            ];
+
+            sampleResults.forEach(result => {
+                const row = document.createElement('tr');
+                // 수정
+                row.innerHTML = `
+                    <td><div class="thumbnail" style="background-color: ${result.thumbnail};"></div></td>
+                    <td>${result.title}</td>
+                    <td>${result.duration}</td>
+                    <td>${result.channel}</td>
+                    <td>${result.views}</td>
+                    <td><button class="learn-btn">클릭</button></td>
+                `;
+                
+                resultsContainer.appendChild(row);
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

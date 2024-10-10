@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blo0m Youtube Studies</title>
+    <link rel="stylesheet" href="style.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+   
+
+    <header>
+        <a href="index.html" class="logo">
+            <span>Blo0m </span>
+            <span>Youtube</span>
+            <span>Studies</span>
+        </a>
+        <nav>
+            <a href="guide.html">Guides</a>
+            <a href="search.html">Search</a>
+            <a href="mypage.html">My profile</a>
+            <div class="dropdown-container">
+                <a href="#" class="classing">Classing</a>
+                <div class="dropdown">
+                    <a href="learning.html">Learning Video</a>
+                    <a href="learned.html">Learned Video</a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="auth">
+            <div class="language-container">
+                <a href="#" class="language">Language</a>
+                <div class="language-dropdown">
+                    <a href="index한국어.html">Korean</a>
+                    <a href="#">English</a>
+                </div>
+            </div>
+            <a href="로그인.html" id="login-link">Login</a>
+            <a href="회원가입.html" id=signup-link>Sign up</a>
+            <a href="#" id="logout-link" style="display: none;">Logout</a>
+
+        </div>
+    </header>
+    <hr>
+
+
+
+    <main>
+
+        <div class="card" id="guide-card" onclick="location.href='guide.html'">
+            <div class="card__background"></div>
+
+            <img
+
+            class="card__background"
+            width="1920"
+            height="2193"
+          />
+
+
+            <div class="card-content | flow">
+                <div class="card__content--container | flow">
+                    
+
+                 
+                    <h2 class="card__title" >Guide</h2>
+           
+                    <p class="card__description">
+                     가이드 설명부분
+                    </p>
+                  </div>
+                  <button class="card__button"  >Read more</button>
+            </div>
+        </div>
+
+      
+
+
+        <div class="card" id="search-card" onclick="location.href='search.html'">
+            <img
+            class="card__background"
+            width="1920"
+            height="2193"
+          />
+
+
+          
+
+
+
+
+
+
+            <div class="card-content | flow">
+                <div class="card__content--container | flow">
+                    <h2 class="card__title">Search</h2>
+                    <p class="card__description">
+                     검색 설명부분
+                    </p>
+                  </div>
+                  <button class="card__button " >검색</button>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </div>
+
+       
+
+
+        <div class="card" id="profile-card" onclick="location.href='mypage.html'">
+            <img
+            class="card__background"
+            width="1920"
+            height="2193"
+          />
+
+
+          
+            <div class="card-content | flow">
+                <div class="card__content--container | flow">
+                    <h2 class="card__title" >My Profile</h2>
+                    <p class="card__description">
+                     프로필 설명부분
+                    </p>
+                  </div>
+                  <button class="card__button">나의 프로필</button>
+            </div> 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </div>
+
+       
+    
+    
+    
+    
+    </main>
+
+    <script>
+        $(document).ready(function() {
+            // 로그인 상태 확인
+            $.get('/check-login', function(data) {
+                if (data.loggedIn) {
+            $('#login-link').hide();
+            $('#signup-link').hide();
+            $('#logout-link').show();
+        } else {
+            $('#login-link').show();
+            $('#signup-link').show();
+            $('#logout-link').hide();
+        }
+            });
+
+            // 로그아웃 처리  (겟처리)
+            $('#logout-link').on('click', function(e) {
+                e.preventDefault();
+                $.get('/logout', function(data) {
+                    if (data.success) {
+                        alert('로그아웃 되었습니다.');
+                        location.reload();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

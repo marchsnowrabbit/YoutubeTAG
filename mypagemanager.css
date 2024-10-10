@@ -1,0 +1,306 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(108, 105, 105);
+
+    /* background-image: url(./hero-bg.jpg);  */
+
+
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(108, 105, 105);
+}
+
+
+header .logo {
+    margin-left: 10px;
+    color: #ffdf00;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header .logo span {
+
+display: block;
+
+}
+
+/* ^ 헤더 나브  */
+
+header nav {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 50px;
+
+}
+
+
+
+header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+header .auth {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+header .auth a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.bottom-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    margin-left: 20px;
+}
+
+
+
+
+
+.top-nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.top-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.8em;
+    margin-left: 20px;
+}
+
+.language-container {
+    position: relative;
+}
+
+
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(108, 105, 105);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.language-dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+ 
+}
+
+.language-container:hover .language-dropdown {
+    display: block;
+}
+
+.bottom-nav {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.classing {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    margin-left: 20px;
+}
+
+.bottom-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    margin-left: 20px;
+}
+
+nav a.classing:hover,
+nav a.language:hover {
+    color: #FCFFC2;
+}
+
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown {                 /* 클래싱 드랍다운   */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(108, 105, 105);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+}
+
+.dropdown-container:hover .dropdown {
+    display: block;
+}
+
+.language {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.bottom-nav {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.bottom-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    margin-left: 20px;
+}
+
+.container {
+    display: flex;
+    margin-top: 100px;
+    padding: 20px;
+}
+
+.sidebar {
+    background-color: #6ab04c;
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.content {
+    flex: 1;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.back-button {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: #0a3d62;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.profile-container {
+    display: flex;
+    gap: 20px;
+}
+
+.profile-box {
+    background-color: #f1f2f6;
+    padding: 20px;
+    border-radius: 10px;
+    color: black;
+}
+
+.profile-left {
+    width: 65%;
+}
+
+.profile-right {
+    width: 30%;
+}
+
+.profile-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-image img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}

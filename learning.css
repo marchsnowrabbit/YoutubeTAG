@@ -1,0 +1,299 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(108, 105, 105);
+    margin: 0;
+    min-height: 100vh;
+}
+
+
+header {
+    
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(108, 105, 105);
+}
+
+
+header .logo {
+    margin-left: 10px;
+    color: #ffdf00;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header .logo span {
+    display: block;
+}
+
+
+
+
+/* ^ 헤더 나브  */
+
+header nav {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 50px;
+
+}
+
+header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+header .auth {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+header .auth a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* ^ 헤더 나브  */
+
+
+
+
+
+
+
+.language-container {
+    position: relative;
+}
+
+.language {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(108, 105, 105);
+
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.language-dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+    font-size: 16px;
+}
+
+.language-container:hover .language-dropdown {
+    display: block;
+}
+
+/* .bottom-nav {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+} */
+
+
+
+
+
+
+nav a.classing:hover,
+nav a.language:hover {
+    color: #FCFFC2;
+}
+
+.dropdown-container {
+    position: relative;
+
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(108, 105, 105);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+}
+
+.dropdown-container:hover .dropdown {
+    display: block;
+}
+
+main {
+    display: flex;
+    padding-top: 100px;
+  
+    flex-direction: column;
+    /* position: relative;
+    align-items: center; */
+
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 600px;
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-btn {
+    padding: 10px;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.search-icon {
+    width: 25px;
+    height: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color:#39391f;
+}
+
+table tbody tr:nth-child(even) {            /* 리스트 짝수 */   
+    background-color: #e0e962;
+}
+
+table tbody tr:nth-child(odd) {             /* 리스트 홀수  */
+    background-color: #e5f18f;
+}
+
+.thumbnail {
+    width: 100px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+}
+
+.learn-btn {
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+h1 {
+    display: flex;
+
+    position:relative;
+    bottom:80px;
+    color: white;
+    
+}
+
+.h1-container {             /*?콘테이너이용해서 줄였을때 고정되는 문제 해결  */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 80px; 
+    
+
+
+}
+
+
+
+th {
+
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+
+}
+
+
+
+
+
+
+
+/* 추천영상 시스템  */
+.recommended-section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+
+
+
+
+}
+
+
+.recommender-section h1 {               /* 추천영상 제목  */
+    position:relative;
+    text-align:center;
+    align-items: center;
+    display: flex;
+    bottom:80px;
+    color: white;
+    font-size:28px;
+
+}
+
+.recommender-h1-container {           /* 추천영상 제목  */
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:80px; 
+    top:100px;
+    margin-bottom:80px;
+
+}
+
