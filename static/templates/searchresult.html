@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색 결과</title>
+    <link rel="stylesheet" href="/static/css/searchresult.css">
+</head>
+
+<body>
+
+
+    <header>
+        <a href="http://localhost:5500/static/templates/home.html" class="logo">
+            <img src="/static/img/logo.png" alt="logo" style="height: 100px;">
+        </a>
+    
+        <nav>
+            <a href="http://localhost:5500/static/templates/guide.html">Guides</a>
+            <a href="http://localhost:5500/static/templates/search.html">Search</a>
+            <a href="http://localhost:5500/static/templates/mypage.html">My profile</a>
+            <div class="dropdown-container">
+                <a href="#" class="classing">Classing</a>
+                <div class="dropdown">
+                    <a href="http://localhost:5500/static/templates/learning.html">Learning Video</a>
+                    <a href="http://localhost:5500/static/templates/learned.html">Learned Video</a>
+                </div>
+            </div>
+        </nav>
+        <div class="auth">
+            <div class="language-container">
+                <a href="#" class="language">Language</a>
+                <div class="language-dropdown">
+                    <a href="http://localhost:5500/static/templates/homeKorean.html">Korean</a>
+                    <a href="http://localhost:5500/static/templates/home.html">English</a>
+                </div>
+            </div>
+            <a href="http://localhost:5500/static/templates/loginnew.html">Login</a>
+            <a href="http://localhost:5500/static/templates/signup.html">Sign up</a>
+        </div>
+    </header>
+    <hr>
+  
+  
+<main>
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="검색">
+        <button class="search-btn"><img src="/static/img/GoogleSearch.png" alt="Search Icon" class="search-icon"></button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>썸네일</th>
+                <th>영상제목</th>
+                <th>영상길이</th>
+                <th>채널명</th>
+                <th>조회수</th>
+                <th>학습하기</th>
+            </tr>
+        </thead>
+        <tbody id="results">
+            <!-- 검색 결과 -->
+        </tbody>
+    </table>
+
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchResult = urlParams.get('searchResult');
+
+        if (searchResult) {
+            document.getElementById('search-input').value = searchResult;
+            fetchSearchResults(searchResult);
+        }
+
+        function fetchSearchResults(searchResult) {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';  
+            
+           //추후수정 필요
+            const sampleResults = [
+                {
+                    thumbnail: 'yellow',
+                    title: `파이썬으로 데이터 분석하기[1-1] (${searchResult})`, //수정
+                    duration: '20:30',
+                    channel: '마지막 코딩',
+                    views: '100,000'
+                },
+               // 추후수정
+            ];
+
+            sampleResults.forEach(result => {
+                const row = document.createElement('tr');
+                // 수정
+                row.innerHTML = `
+                    <td><div class="thumbnail" style="background-color: ${result.thumbnail};"></div></td>
+                    <td>${result.title}</td>
+                    <td>${result.duration}</td>
+                    <td>${result.channel}</td>
+                    <td>${result.views}</td>
+                    <td>  <a href="analysis.html" >
+                        
+                        <button class="learn-btn">클릭</button></td>
+                        </a>
+                `;
+                
+                resultsContainer.appendChild(row);
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

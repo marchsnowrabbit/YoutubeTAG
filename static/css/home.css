@@ -1,0 +1,909 @@
+/*색: rgb(11,36,60)*/
+
+
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(11, 36, 60);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap; /* 카드가 한 줄에 다 들어가지 않으면 줄 바꿈을 함 */
+    justify-content: space-between;/* 카드를 중앙에 정렬 */
+    align-items: center;
+    padding: 20px;
+    height: auto;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+    position: relative; */
+
+}
+
+header {
+    display: flex;
+    flex-direction: row;               
+    justify-content: flex-start;       
+    align-items: center;               
+    padding: 0 20px;
+    height: 100px;
+    background-color: rgb(11, 36, 60);
+    position: relative;
+    /* display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 20px;
+    height: 100px;
+    background-color: rgb(11, 36, 60);
+    position: relative; */
+}
+
+header .logo {
+    margin-right: 10px;               
+    color: white; 
+    
+    /* margin-right: auto;
+    /* margin-left: 10px; 
+    color: rgb(11, 36, 60); */
+    
+    
+    /* align-items: center; */
+}
+
+
+header nav {
+    display: flex;              
+    gap: 35px;                 
+    align-items: center;        
+    margin: 0;  
+    
+    /* /* margin-top: 50px; 
+    display: flex;
+    /* justify-content: center; 
+    gap: 35px;
+    align-items: center;
+    /* margin: 0; 
+    font-weight: 545; */
+    }
+
+header nav a {
+    color: white;
+    font-size: 23px;
+    text-decoration: none;
+
+} 
+
+header .auth {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+
+}
+
+header .auth a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/** Dropdown styling */
+.language-container {
+    position: relative;
+}
+
+.language {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    }
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(11, 36, 60);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.language-dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+    font-size: 16px;
+}
+
+.language-container:hover .language-dropdown {
+    display: block;
+}
+
+nav a.classing:hover, nav a.language:hover {
+    color: rgb(11, 36, 60);
+}
+
+/* classing 드롭다운 */
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(11, 36, 60);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+    font-size: 18px;
+}
+
+nav a.classing:hover {
+    color: white; 
+    display: inline; 
+
+}
+
+.dropdown-container:hover .dropdown {
+    display: block;
+    
+}
+
+
+/*^ 헤더,드랍다운 */
+/*^ ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+
+
+
+
+
+
+    
+/* 전체 카드 설정 */
+
+/* 카드 스타일 */
+/* 부모 요소에 대한 스타일 */
+.card-container {
+    position: relative;
+    width: 100%;      
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-top: -250px;
+}
+
+/* 카드 스타일 */
+.card {
+    position: absolute; 
+    margin-top: 100px; 
+    width: 425px;
+    height: 270px;
+    border-radius: 50px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: transform ease, z-index 0.4s ease;
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+}
+
+
+/* 카드의 콘텐츠 레이어 설정 */
+.card-content {
+    position: absolute; /* 카드 위에 위치 */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: .75rem;
+    /* background: rgba(0, 0, 0, 0.5); 반투명 검은색 배경 */
+
+
+    color: #fff; /* 글자색 흰색 */
+    font-family: sans-serif;
+    font-size: 2.3rem;
+    font-weight: bold;
+    transition: opacity 0.4s; /* 투명도 전환 효과   */
+  }
+
+
+
+
+
+
+
+
+
+#guide-card {       
+    background-image:  url('/static/img/guide_withicon.png');
+    background-size:cover;         
+      /* 이미지를 카드의 크기에 맞춤 */
+      background-position: center;  
+      /** 이미지를 카드의 중앙에 맞춤 */ 
+    transform: rotate(-15deg);
+    top: 70px;
+   left: calc(10% - -50px);
+    z-index: 2;
+
+
+    display: grid;
+    
+    overflow: hidden;
+    cursor: pointer;
+
+}
+
+
+.card__background[src=""],
+.card__background:not([src]) {
+    display: none;
+}
+
+
+
+
+/* 호버 효과 조정 */
+/* @media (any-hover: hover) and (any-pointer: fine) {
+    #guide-card:hover .card__button,
+    #guide-card:focus-within .card__button {
+   
+        bottom: 20px;
+        right: 20px;
+        
+
+    }
+
+} */
+
+
+
+
+#search-card {
+    background-image:  url(/static/img/search_withicon.png);
+    
+    background-size:cover;         
+    /* 이미지를 카드의 크기에 맞춤 */
+    background-position: center;  
+    
+    background-color: #DB9E8A;
+    transform: rotate(-15deg);
+    top: 110px;
+   left: calc(30% - 0px);
+    z-index: 2;
+    display: grid;
+    
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+#profile-card {
+    background-image:  url('/static/img/profile_withicon.png');
+    
+    background-size:cover;         
+    /* 이미지를 카드의 크기에 맞춤 */
+    background-position: center;  
+    background-color: #8A96DB;
+    transform: rotate(-15deg);
+    top: 150px;
+    left: calc(50% - 35px);
+    z-index: 3;
+cursor: pointer;
+}
+
+
+
+
+
+
+.card:hover {
+    transform: scale(1.1) !important;
+    z-index: 10 !important;
+}
+
+/* 카드 콘텐츠에 마우스를 올렸을 때 효과 */
+.card:hover .card-content {
+    opacity: 1; /* 카드 콘텐츠가 보이게 함 */
+  }
+  
+  /*& 이미지가 확대되는 효과 */
+  .card:hover img {
+    transform: scale(1.2); /* 이미지 확대 */
+  }
+  
+/* src가 비어있거나 로딩 실패 시 이미지 숨김 */
+/* .card__background:not([src]),
+.card__background[src=""],
+.card__background[src="#"],
+.card__background[src="null"] {
+    display: none;
+} */
+
+
+  
+  /* 마우스 호버 시 이미지 확대 효과 */
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+    
+  }
+
+
+/*^ ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+/* 이미지가 없을 때 카드에 배경색 지정 */
+
+
+  h2 {
+    font-size: 2.25rem;
+    font-family: var(--font-title);
+    color: var(--white);
+    line-height: 1.1;
+  }
+  
+  p {
+    font-family: var(--font-text);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--white);
+  }
+  
+  .flow > * + * {
+    margin-top: var(--flow-space, 1em);
+  }
+
+
+  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap");
+
+  :root {
+    /* Colors */
+    --brand-color: hsl(46, 100%, 50%);
+    --black: hsl(0, 0%, 0%);
+    --white: hsl(0, 0%, 100%);
+    /* Fonts */
+    --font-title: "Montserrat", sans-serif;
+    --font-text: "Lato", sans-serif;
+  }
+  
+  /* RESET */
+  
+  /* Box sizing rules */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  /* Remove default margin */
+
+
+
+  .card > * {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  
+  .card__background {
+    object-fit: cover;
+    max-width: 100%;
+    height: 100%;
+
+
+    
+
+
+
+  }
+
+
+  
+  
+  .card__content {
+
+   
+
+    --flow-space: 0.9375rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-end;
+    height: 55%;
+    padding: 12% 1.25rem 1.875rem;
+    background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 0%, 0) 0%,
+      hsla(0, 0%, 0%, 0.3) 10%,
+      hsl(0, 0%, 0%) 100%
+    );
+  }
+  
+  .card__content--container {
+
+
+
+
+    --flow-space: 1.25rem;
+  }
+  
+  .card__title {
+
+    left:180px;
+
+    position: relative;
+    width: fit-content;
+    width: -moz-fit-content; 
+    /* Prefijo necesario para Firefox  */
+
+
+
+
+  }
+  
+  .card__title::after {                         /* 노란색 네모줄  */
+    content: "";
+    position: absolute;
+    height: 0.3125rem;
+    width: calc(100% + 1.25rem);
+    bottom: calc((1.25rem - 0.5rem) * -1);
+    left: -1.25rem;
+    background-color: var(--brand-color);
+  }
+  
+  .card__button {
+    padding: 0.75em 1.6em;
+    width: fit-content;
+    width: -moz-fit-content;                /* Prefijo necesario para Firefox  */
+    font-variant: small-caps;
+    font-weight: bold;
+    border-radius: 0.45em;
+    border: none;
+    background-color: var(--brand-color);
+    font-family: var(--font-title);
+    font-size: 1.125rem;
+    color: var(--black);
+  }
+  
+  .card__button:focus {                 /* 버튼 눌렀을때  */
+    outline: 2px solid black;
+    outline-offset: -5px;
+  }
+  
+  @media (any-hover: hover) and (any-pointer: fine) {
+    .card__content {
+      transform: translateY(62%);
+      transition: transform 500ms ease-out;
+      transition-delay: 500ms;
+    }
+  
+    .card__title::after {
+      opacity: 0;
+      transform: scaleX(0);
+      transition: opacity 1000ms ease-in, transform 500ms ease-out;
+      transition-delay: 500ms;
+      transform-origin: right;
+    }
+  
+    .card__background {
+      transition: transform 500ms ease-in;
+    }
+  
+    .card__content--container > :not(.card__title),
+    .card__button {
+      opacity: 0;
+      transition: transform 500ms ease-out, opacity 500ms ease-out;
+    }
+  
+    .card:hover,
+    .card:focus-within {
+      transform: scale(1.05);
+      transition: transform 500ms ease-in;
+    }
+  
+    .card:hover .card__content,
+    .card:focus-within .card__content {
+      transform: translateY(0);
+      transition: transform 500ms ease-in;
+    }
+  
+    .card:focus-within .card__content {
+      transition-duration: 0ms;
+    }
+  
+    .card:hover .card__background,
+    .card:focus-within .card__background {
+      transform: scale(1.3);
+    }
+  
+    .card:hover .card__content--container > :not(.card__title),
+    .card:hover .card__button,
+    .card:focus-within .card__content--container > :not(.card__title),
+    .card:focus-within .card__button {
+      opacity: 1;
+      transition: opacity 500ms ease-in;
+      transition-delay: 1000ms;
+    }
+  
+    /* .card:hover .card__title::after,                    /* 노란색 가로줄  */
+    .card:focus-within .card__title::after {
+      opacity: 1;
+      transform: scaleX(1);
+      transform-origin: left;
+      transition: opacity 500ms ease-in, transform 500ms ease-in;
+      transition-delay: 500ms;
+    } 
+  }
+  
+/*^ 가이드 카드의 타이틀 위치,버튼 위치  변경 */
+#guide-card .card__title {
+    position: relative;
+    left: -60px;
+    top: -15px;  
+opacity:0;
+    transition: opacity 0.5s ease;
+}
+
+#guide-card .card__description {
+position:relative;
+left: -100px;
+ top: -25px;  
+}
+  
+
+#guide-card:hover .card__title {
+    opacity: 1;
+}
+
+#guide-card .card__button {
+    position: relative; /* 절대 위치 지정 */
+    bottom: 50px; /* 아래에서 20px 떨어진 위치 */
+        left:  -100px;
+cursor: pointer;
+    /* 필요에 따라 다음 속성들을 조정할 수 있습니다 */
+    /* left: auto; */ /* 왼쪽 정렬을 해제하고 싶다면 */
+    /* transform: none; */ /* 다른 변형 효과를 제거하고 싶다면 */
+}
+
+/*^ 가이드 카드의 타이틀 위치,버튼 위치  변경 */
+
+
+
+
+/*^ 검색 카드의 타이틀 위치 변경 */
+#search-card .card__title {
+    position: relative;
+    left: -78px;
+    top: -7px;  
+opacity:0;
+    transition: opacity 0.5s ease;
+}
+
+#search-card .card__description {
+position:relative;
+left: -115px;
+ top: -30px;  
+}
+  
+
+#search-card:hover .card__title {
+    opacity: 1;
+}
+
+#search-card .card__button {
+    position: relative; /* 절대 위치 지정 */
+    bottom: 60px; /* 아래에서 20px 떨어진 위치 */
+       left:  -110px;
+cursor: pointer;
+    /* 필요에 따라 다음 속성들을 조정할 수 있습니다 */
+    /* left: auto; */ /* 왼쪽 정렬을 해제하고 싶다면 */
+    /* transform: none; */ /* 다른 변형 효과를 제거하고 싶다면 */
+}
+
+/*^ 검색 카드의 타이틀 위치 변경 */
+
+
+/*^ 프로필 카드의 타이틀 위치 변경 */
+
+
+
+#profile-card .card__title {
+    position: relative;
+    left: 110px;
+    top: -70px;  
+    opacity:0;
+    transition: opacity 0.5s ease;
+}
+
+#profile-card .card__description {
+position:relative;
+left: -5px;
+ top: -10px;  
+}
+
+#profile-card:hover .card__title {
+
+    opacity: 1;
+
+
+}
+
+#profile-card .card__button {
+    position: relative; /* 절대 위치 지정 */
+    bottom: 20px; /* 아래에서 20px 떨어진 위치 */
+        left: 0px;
+cursor: pointer;
+    /* 필요에 따라 다음 속성들을 조정할 수 있습니다 */
+    /* left: auto; */ /* 왼쪽 정렬을 해제하고 싶다면 */
+    /* transform: none; */ /* 다른 변형 효과를 제거하고 싶다면 */
+}
+
+/*^ 프로필 카드의 타이틀 위치 변경 */
+
+/* 반응형 페이지 */
+@media only screen and (max-width: 768px) {
+    /* 헤더 */
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+    }
+
+    
+    header .logo {
+        position: relative;
+        top: 10px; 
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px; 
+    }
+
+   
+    header nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: -5px; 
+    }
+
+    header nav a {
+        color: white;
+        font-size: 20px; 
+        text-decoration: none;
+    }
+
+    
+    header .auth {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+  /* 카드 */  
+    main {
+        padding: -20px;
+        display: block;   
+    }
+.card {
+    margin-top: 200px;
+    width: 325px; 
+    height: 202px; 
+    transform: translateX(-200px);
+
+}
+.card__button {
+    position: relative;
+    left: 0; /* 모바일에서는 left 값을 0으로 설정 */
+    margin-top: 10px; /* 버튼 위에 간격을 추가 */
+    display: flex;
+    justify-content: center; /* 버튼을 중앙 정렬 */
+}
+       #profile-card {
+        top: 150px;
+        left: calc(55% - 25px);
+    }
+
+    #search-card {
+        top: 130px;
+        left: calc(27% - 0px);
+    }
+
+    #guide-card {
+        top: 110px;
+         left: calc(0% - -25px);
+    }
+
+    
+    #profile-card .card__title {
+    position: relative;
+    left: calc(35% - 25px);
+    top: -45px;  
+    opacity:0;
+    transition: opacity 0.5s ease;
+ font-size: 25px;
+}
+
+#profile-card .card__description {
+position:relative;
+left: calc(10% - 25px);
+ top: 0px;  
+}
+
+#profile-card:hover .card__title {
+    opacity: 1;
+}
+
+#profile-card .card__button {
+    position: relative; /* 절대 위치 지정 */
+    bottom: 10px; /* 아래에서 20px 떨어진 위치 */
+        left: calc(25% - 20px);
+cursor: pointer;
+  }
+
+ #search-card .card__title {
+    position: relative;
+    left: calc(-70% - 0px);
+    top: 53px;  
+    opacity:0;
+    transition: opacity 0.5s ease;
+ font-size: 25px;
+}
+
+#search-card .card__description {
+position:relative;
+left: calc(-35% - 25px);
+ top: 30px;  
+}
+
+#search-card:hover .card__title {
+    opacity: 1;
+}
+
+#search-card .card__button {
+    position: relative; /* 절대 위치 지정 */
+    bottom: 10px; /* 아래에서 20px 떨어진 위치 */
+        left: calc(-30% - 20px);
+cursor: pointer;
+  }
+
+#guide-card .card__title {
+    position: relative;
+    left: calc(-37% - 0px);
+    top: 25px;  
+    opacity:0;
+    transition: opacity 0.5s ease;
+ font-size: 25px;
+}
+
+#guide-card .card__description {
+position:relative;
+left: calc(-35% - 25px);
+ top: 8px;  
+}
+
+#guide-card:hover .card__title {
+    opacity: 1;
+}
+
+#guide-card .card__button {
+    position: relative; /* 절대 위치 지정 */
+    bottom: 10px; /* 아래에서 20px 떨어진 위치 */
+        left: calc(-40% - 20px);
+cursor: pointer;
+  }
+}
+@media only screen and (max-width: 360px) {
+    #profile-card .card__title {
+    position: relative;
+    left: calc(35% - 25px);
+    top: -45px;  
+    opacity:0;
+    transition: opacity 0.5s ease;
+ font-size: 25px;
+}
+
+#profile-card .card__description {
+position:relative;
+left: calc(10% - 25px);
+ top: 0px;  
+}
+
+#profile-card:hover .card__title {
+    opacity: 1;
+}
+
+#profile-card .card__button {
+    position: relative; /* 절대 위치 지정 */
+    bottom: 10px; /* 아래에서 20px 떨어진 위치 */
+        left: calc(25% - 20px);
+cursor: pointer;
+  }
+
+ #search-card .card__title {
+    position: relative;
+    left: calc(-70% - 0px);
+    top: 53px;  
+    opacity:0;
+    transition: opacity 0.5s ease;
+ font-size: 25px;
+}
+
+#search-card .card__description {
+position:relative;
+left: calc(-35% - 25px);
+ top: 30px;  
+}
+
+#search-card:hover .card__title {
+    opacity: 1;
+}
+
+#search-card .card__button {
+    position: relative; /* 절대 위치 지정 */
+    bottom: 10px; /* 아래에서 20px 떨어진 위치 */
+        left: calc(-30% - 20px);
+cursor: pointer;
+  }
+
+#guide-card .card__title {
+    position: relative;
+    left: calc(-55% - 0px);
+    top: 45px;  
+    opacity:0;
+    transition: opacity 0.5s ease;
+ font-size: 25px;
+}
+
+#guide-card .card__description {
+position:relative;
+left: calc(-20% - 25px);
+ top: 35px;  
+}
+
+#guide-card:hover .card__title {
+    opacity: 1;
+}
+
+#guide-card .card__button {
+    position: relative; /* 절대 위치 지정 */
+    bottom: 10px; /* 아래에서 20px 떨어진 위치 */
+        left: calc(-40% - 20px);
+cursor: pointer;
+  }
+}
+
+
+

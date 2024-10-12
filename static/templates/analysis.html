@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영상 페이지</title>
+    <link rel="stylesheet" href="/static/css/analysis.css">
+</head>
+
+<body>
+    <header>
+        <a href="http://localhost:5500/static/templates/home.html" class="logo">
+            <img src="/static/img/logo.png" alt="logo" style="height: 80px;">
+        </a>
+        
+        <nav>
+            <a href="http://localhost:5500/static/templates/guide.html">Guides</a>
+            <a href="http://localhost:5500/static/templates/search.html">Search</a>
+            <a href="http://localhost:5500/static/templates/mypage.html">My profile</a>
+            <div class="dropdown-container">
+                <a href="#" class="classing">Classing</a>
+                <div class="dropdown">
+                    <a href="http://localhost:5500/static/templates/learning.html">Learning Video</a>
+                    <a href="http://localhost:5500/static/templates/learned.html">Learned Video</a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="auth">
+            <div class="language-container">
+                <a href="#" class="language">Language</a>
+                <div class="language-dropdown">
+                    <a href="http://localhost:5500/static/templates/homeKorean.html">Korean</a>
+                    <a href="http://localhost:5500/static/templates/home.html">English</a>
+                </div>
+            </div>
+            <a href="http://localhost:5500/static/templates/loginnew.html" id="login-link">Login</a>
+            <a href="http://localhost:5500/static/templates/signup.html" id=signup-link>Sign up</a>
+            <a href="#" id="logout-link" style="display: none;">Logout</a>
+
+        </div>
+    </header>
+    <hr>
+
+    <main>
+        <div class="video-container">
+            <div class="video-thumbnail" id="video-thumbnail">
+                <img src="/static/img/thumbnail.png" alt="유튜브 영상 썸네일" id="youtube-thumbnail">
+            </div>
+            <div class="video-controls" id="controls">
+                <div class="language-select">
+                    <!-- <span>영상 지원 언어 선택</span><br> -->
+                    <a href="http://localhost:5500/static/templates/homeKorean.html">한국어</a>
+                    <a href="http://localhost:5500/static/templates/home.html">영어</a>
+                </div>
+                <button class="btn btn-save" onclick="saveVideo()">학습할 영상에 저장</button>
+                <button class="btn btn-analyze" onclick="goToAnalysis()">분석하기</button>
+            </div>
+            <div class="keyword-section">
+                <h2>키워드(중복명사 보여주기)</h2>
+                <div class="keywords">
+                    <!-- 추후수정 -->
+                </div>
+                <div class="image-section">
+                    <!-- 추후수정 -->
+                </div>
+            </div>
+        </div>
+
+        <div class="popup" id="popup">
+            자막이 없습니다.
+            <button onclick="hidePopup()">닫기</button>
+        </div>
+
+        <div class="video-info">
+            <p>제목 | 조회수</p>
+            <p>채널명</p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 서버에서 동적으로 받아오는 ID들
+            const videoId = 'SITE_VIDEO_ID'; // 서버에서 동적으로 받아오는 사이트에서 사용하는 영상 ID
+            const youtubeVideoId = 'YOUTUBE_VIDEO_ID'; // 서버에서 동적으로 받아오는 유튜브 영상 ID
+            const videoThumbnail = document.getElementById('youtube-thumbnail');
+            videoThumbnail.src = `https://img.youtube.com/vi/${youtubeVideoId}/hqdefault.jpg`; // 유튜브 썸네일 이미지 경로
+
+            // 학습할 영상에 저장 (서버 연동)
+            window.saveVideo = async function() {
+                const video = {
+                    videoId: videoId,  // 서버에서 사용하는 SITE_VIDEO_ID
+                    youtubeVideoId: youtubeVideoId,  // 유튜브 VIDEO_ID
+                    title: '영상 제목',  // 실제 제목을 서버에서 동적으로 받아야 함
+                    channel: '채널명'   // 실제 채널명을 서버에서 받아야 함
+                };
+
+                try {
+                    const response = await fetch('/api/learning-videos', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(video)
+                    });
+
+                    if (response.ok) {
+                        alert('영상이 학습 중인 목록에 저장되었습니다.');
+                        window.location.href = 'learning.html'; // 저장 후 학습 페이지로 이동
+                    } else {
+                        alert('영상 저장 실패');
+                    }
+                } catch (error) {
+                    console.error('영상 저장 중 오류 발생:', error);
+                }
+            };
+
+            // 학습 완료 후 분석 페이지로 이동 (서버 연동)
+            window.goToAnalysis = async function() {
+                const video = {
+                    videoId: videoId,  // 서버에서 사용하는 SITE_VIDEO_ID
+                    youtubeVideoId: youtubeVideoId,  // 유튜브 VIDEO_ID
+                    title: '영상 제목',  // 실제 제목을 서버에서 동적으로 받아야 함
+                    channel: '채널명'   // 실제 채널명을 서버에서 받아야 함
+                };
+
+                try {
+                    const response = await fetch('/api/completed-videos', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(video)
+                    });
+
+                    if (response.ok) {
+                        alert('영상이 학습 완료되었습니다.');
+                        window.location.href = 'learned.html'; // 완료 후 완료된 영상 페이지로 이동
+                    } else {
+                        alert('학습 완료 처리 실패');
+                    }
+                } catch (error) {
+                    console.error('학습 완료 처리 중 오류 발생:', error);
+                }
+            };
+
+            // 팝업 닫기
+            window.hidePopup = function() {
+                document.querySelector('.popup').style.display = 'none';
+            };
+
+            // 분석 팝업 표시 및 키워드, 이미지 추가
+            window.showPopup = function() {
+                const hasData = true; // 데이터가 있다고 가정 (추후 수정 필요)
+
+                if (hasData) {
+                    document.querySelector('.keyword-section').style.display = 'block';
+                    document.querySelector('.image-section').style.display = 'block';
+                    document.querySelector('.video-controls').style.display = 'none';
+                    document.querySelector('.popup').style.display = 'none';
+
+                    // 키워드 추가 (추후 수정)
+                    const keywordsContainer = document.querySelector('.keywords');
+                    keywordsContainer.innerHTML = '';
+                    const keywords = ['#파이썬', '#코딩']; // 추후 실제 데이터로 대체
+                    keywords.forEach(keyword => {
+                        const keywordDiv = document.createElement('div');
+                        keywordDiv.classList.add('keyword');
+                        keywordDiv.textContent = keyword;
+                        keywordsContainer.appendChild(keywordDiv);
+                    });
+
+                    // 이미지 추가 (추후 수정)
+                    const imageContainer = document.querySelector('.image-section');
+                    imageContainer.innerHTML = '';
+                    const imageDiv = document.createElement('div');
+                    imageDiv.classList.add('image');
+                    const img = document.createElement('img');
+                    img.src = 'bloo.png'; // 추후 실제 이미지 데이터로 대체
+                    img.alt = "Bloom's Taxonomy Pyramid";
+                    imageDiv.appendChild(img);
+                    imageContainer.appendChild(imageDiv);
+                } else {
+                    document.querySelector('.popup').style.display = 'block';
+                }
+            };
+        });
+    </script>
+
+</body>
+
+</html>

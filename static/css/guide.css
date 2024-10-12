@@ -1,0 +1,294 @@
+/*색: rgb(11,36,60)*/
+
+
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(11, 36, 60);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap; /* 카드가 한 줄에 다 들어가지 않으면 줄 바꿈을 함 */
+    justify-content: space-between;/* 카드를 중앙에 정렬 */
+    align-items: center;
+    padding: 20px;
+    height: auto;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+    position: relative; */
+
+}
+
+header {
+    display: flex;
+    flex-direction: row;               
+    justify-content: flex-start;       
+    align-items: center;               
+    padding: 0 20px;
+    height: 100px;
+    background-color: rgb(11, 36, 60);
+    position: relative;
+    /* display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 20px;
+    height: 100px;
+    background-color: rgb(11, 36, 60);
+    position: relative; */
+}
+
+header .logo {
+    margin-right: 10px;               
+    color: white; 
+    
+    /* margin-right: auto;
+    /* margin-left: 10px; 
+    color: rgb(11, 36, 60); */
+    
+    
+    /* align-items: center; */
+}
+
+
+header nav {
+    display: flex;              
+    gap: 35px;                 
+    align-items: center;        
+    margin: 0;  
+    
+    /* /* margin-top: 50px; 
+    display: flex;
+    /* justify-content: center; 
+    gap: 35px;
+    align-items: center;
+    /* margin: 0; 
+    font-weight: 545; */
+    }
+
+header nav a {
+    color: white;
+    font-size: 23px;
+    text-decoration: none;
+
+} 
+
+header .auth {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+
+}
+
+header .auth a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/** Dropdown styling */
+.language-container {
+    position: relative;
+}
+
+.language {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    }
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(11, 36, 60);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.language-dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+    font-size: 16px;
+}
+
+.language-container:hover .language-dropdown {
+    display: block;
+}
+
+nav a.classing:hover, nav a.language:hover {
+    color: rgb(11, 36, 60);
+}
+
+/* classing 드롭다운 */
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(11, 36, 60);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+    font-size: 18px;
+}
+
+nav a.classing:hover {
+    color: white; 
+    display: inline; 
+
+}
+
+.dropdown-container:hover .dropdown {
+    display: block;
+    
+}
+
+
+/*^ 헤더,드랍다운 */
+/*^ ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+.text-content {
+    max-width: 600px;
+    margin-right: 20px; 
+text-align: center;
+}
+
+.text-content p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 30px;
+}
+/* 모니터화면 */
+.image-content img {
+
+    position:relative;
+    max-width: 400px;
+    height: auto;
+    cursor: pointer;
+
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+}
+
+.card img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 1em;
+    color: #777;
+}
+.popup {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+.popup-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+.container p {          /* p 태그 색상 */
+
+font-size:20px;
+color:rgb(216, 195, 36);
+
+
+}
