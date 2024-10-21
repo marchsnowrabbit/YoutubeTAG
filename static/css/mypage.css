@@ -1,0 +1,334 @@
+/*색: rgb(11,36,60)*/
+
+
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(11, 36, 60);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap; /* 카드가 한 줄에 다 들어가지 않으면 줄 바꿈을 함 */
+    justify-content: space-between;/* 카드를 중앙에 정렬 */
+    align-items: center;
+    padding: 20px;
+    height: auto;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+    position: relative; */
+
+}
+
+header {
+    display: flex;
+    flex-direction: row;               
+    justify-content: flex-start;       
+    align-items: center;               
+    padding: 0 20px;
+    height: 100px;
+    background-color: rgb(11, 36, 60);
+    position: relative;
+    /* display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 20px;
+    height: 100px;
+    background-color: rgb(11, 36, 60);
+    position: relative; */
+}
+
+header .logo {
+    margin-right: 10px;               
+    color: white; 
+    
+    /* margin-right: auto;
+    /* margin-left: 10px; 
+    color: rgb(11, 36, 60); */
+    
+    
+    /* align-items: center; */
+}
+
+
+header nav {
+    display: flex;              
+    gap: 35px;                 
+    align-items: center;        
+    margin: 0;  
+    
+    /* /* margin-top: 50px; 
+    display: flex;
+    /* justify-content: center; 
+    gap: 35px;
+    align-items: center;
+    /* margin: 0; 
+    font-weight: 545; */
+    }
+
+header nav a {
+    color: white;
+    font-size: 23px;
+    text-decoration: none;
+
+} 
+
+header .auth {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+
+}
+
+header .auth a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/** Dropdown styling */
+.language-container {
+    position: relative;
+}
+
+.language {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    }
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(11, 36, 60);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.language-dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+    font-size: 16px;
+}
+
+.language-container:hover .language-dropdown {
+    display: block;
+}
+
+nav a.classing:hover, nav a.language:hover {
+    color: rgb(11, 36, 60);
+}
+
+/* classing 드롭다운 */
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(11, 36, 60);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+    font-size: 18px;
+}
+
+nav a.classing:hover {
+    color: white; 
+    display: inline; 
+
+}
+
+.dropdown-container:hover .dropdown {
+    display: block;
+    
+}
+
+
+/*^ 헤더,드랍다운 */
+/*^ ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+
+
+.container {
+    display: flex;
+    margin-top: 100px;
+    padding: 20px;
+}
+
+.sidebar {
+    background-color: #6ab04c;
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #4a9e3d;
+}
+
+.content {
+    flex: 1;
+    background-color: #ffffff;
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.back-button {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: #0a3d62;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.profile-container {
+    display: flex;
+    gap: 20px;
+}
+
+.profile-box {
+    background-color: #f1f2f6;
+    padding: 20px;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-left {
+    width: 65%;
+}
+
+.profile-right {
+    width: 30%;
+}
+
+.profile-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-image img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+
+form {
+    margin-bottom: 10px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #4a9e3d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+form button:hover {
+    background-color: #3e7e33;
+}
+
+form button:active {
+    background-color: #2e5e23;
+    transform: scale(0.98);
+}
+
+
+
+
+
+/* 기본적으로 모든 content-section 숨기기 */
+.content-section {
+    display: none;
+}
+
+/* active 클래스가 적용된 섹션만 표시 */
+.content-section.active {
+    display: block;
+}

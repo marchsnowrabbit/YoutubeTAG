@@ -1,0 +1,328 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(11, 36, 60);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap; /* 카드가 한 줄에 다 들어가지 않으면 줄 바꿈을 함 */
+    justify-content: space-between;/* 카드를 중앙에 정렬 */
+    align-items: center;
+    padding: 20px;
+    height: auto;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+    position: relative; */
+
+}
+
+/* 패딩: 상하좌우 */
+.box-container {        
+    padding: 40px 20px 20px 20px;
+}
+
+.analysis {
+    border: 2px solid #fff;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(11, 36, 60);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.channel-name p {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.channel-name p:hover {
+    text-decoration: underline;
+}
+
+.result {
+    margin-top: 20px;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+}
+
+.slider input[type=range] {
+    margin: 0 10px;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.graph {
+
+
+
+    margin-top: -100px;
+    margin-left : 250px;
+    text-align: center;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.save-btn, .close-btn {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 10px;
+    margin-left:-400px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    display:inline-block;
+    transition: all 0.1s ease;
+    box-shadow: 0 4px 6px rgba(12, 11, 11, 0.1);
+
+
+}
+
+.save-btn {
+    background-color: #9994EB;
+    color: #fff;
+    
+}
+
+.close-btn {
+    background-color: #72BA84;
+    color: #fff;
+}
+
+.save-btn:hover, .close-btn:hover {
+    background-color: darken(#9994EB, 10%); 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.close-btn:hover {
+    background-color: darken(#72BA84, 10%); 
+}
+
+.save-btn:active, .close-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+.analysis .channel-name p.selectable:hover {
+    text-decoration: none;
+    cursor: pointer;
+
+
+    
+}
+
+.selectable {
+    cursor: pointer;
+}
+
+
+
+
+
+
+  /*! 버튼 */
+.selected-section {               
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    background-color: #461776;
+    padding: 10px 20px 10px 40px;
+
+    font-size: 20px;
+    width:220px;
+    height:20px;
+
+    clip-path: polygon(18% 0%,90% 0%, 
+    
+    100% 100%, 10% 100%);
+
+    
+    display:flex;
+    justify-content: center;
+    align-items: center; 
+    text-align: center; 
+}
+
+.color-info {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+header {
+    display: flex;
+    flex-direction: row;               
+    justify-content: flex-start;       
+    align-items: center;               
+    padding: 0 20px;
+    height: 100px;
+    background-color: rgb(11, 36, 60);
+    position: relative;
+    /* display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 20px;
+    height: 100px;
+    background-color: rgb(11, 36, 60);
+    position: relative; */
+}
+
+header .logo {
+    margin-right: 10px;               
+    color: white; 
+    
+    /* margin-right: auto;
+    /* margin-left: 10px; 
+    color: rgb(11, 36, 60); */
+    
+    
+    /* align-items: center; */
+}
+
+
+header nav {
+    display: flex;              
+    gap: 35px;                 
+    align-items: center;        
+    margin: 0;  
+    
+    /* /* margin-top: 50px; 
+    display: flex;
+    /* justify-content: center; 
+    gap: 35px;
+    align-items: center;
+    /* margin: 0; 
+    font-weight: 545; */
+    }
+
+header nav a {
+    color: white;
+    font-size: 23px;
+    text-decoration: none;
+
+} 
+
+header .auth {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+
+}
+
+header .auth a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/** Dropdown styling */
+.language-container {
+    position: relative;
+}
+
+.language {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    }
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(11, 36, 60);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.language-dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+    font-size: 16px;
+}
+
+.language-container:hover .language-dropdown {
+    display: block;
+}
+
+nav a.classing:hover, nav a.language:hover {
+    color: rgb(11, 36, 60);
+}
+
+/* classing 드롭다운 */
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(11, 36, 60);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    white-space: nowrap;
+    display: block;
+    font-size: 18px;
+}
+
+nav a.classing:hover {
+    color: white; 
+    display: inline; 
+
+}
+
+.dropdown-container:hover .dropdown {
+    display: block;
+    
+}
+
+
+/*^ 헤더,드랍다운 */
+/*^ ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */

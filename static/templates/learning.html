@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습중인 영상</title>
+    <link rel="stylesheet" href="/static/css/learning.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+    
+
+
+
+    <header>
+        <a href="http://localhost:5500/static/templates/home.html" class="logo">
+            <img src="/static/img/logo.png" alt="logo" style="height: 100px;">
+        </a>
+        <nav>
+            <a href="http://localhost:5500/static/templates/guide.html">Guides</a>
+            <a href="http://localhost:5500/static/templates/search.html">Search</a>
+            <a href="http://localhost:5500/static/templates/mypage.html">My profile</a>
+            <div class="dropdown-container">
+                <a href="#" class="classing">Classing</a>
+                <div class="dropdown">
+                    <a href="http://localhost:5500/static/templates/learning.html">Learning Video</a>
+                    <a href="http://localhost:5500/static/templates/learned.html">Learned Video</a>
+                </div>
+            </div>
+        </nav>
+        <div class="auth">
+            <div class="language-container">
+                <a href="#" class="language">Language</a>
+                <div class="language-dropdown">
+                    <a href="http://localhost:5500/static/templates/homeKorean.html">Korean</a>
+                    <a href="http://localhost:5500/static/templates/home.html">English</a>
+                </div>
+            </div>
+            <a href="http://localhost:5500/static/templates/loginnew.html" id="login-link">Login</a>
+            <a href="http://localhost:5500/static/templates/signup.html" id="signup-link">Sign up</a>
+            <a href="#" id="logout-link" style="display: none;">Logout</a>
+        </div>
+    </header>
+    <hr>
+
+    <main>
+        
+    </main>
+
+    <script>
+        $(document).ready(function () {
+            // 시청 기록 불러오기
+            $.get('/get-watched-videos', function (data) {
+                if (data.success) {
+                    const container = $('#learning-results'); // 시청 기록을 추가할 위치
+                    data.watchedVideos.forEach(video => {
+                        const videoElement = 
+                        
+                        
+                        
+                         /*  `
+                            <div class="video-item">
+                                <h3>${video.title}</h3>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/${video.videoId}" frameborder="0" allowfullscreen></iframe>
+                                <p>시청 날짜: ${new Date(video.watchedDate).toLocaleString()}</p>
+                            </div>
+                        `; */
+                
+                        
+                        `
+                            <tr>
+                                <td><img src="https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg" alt="썸네일" width="120"></td>
+                                <td>${video.title}</td>
+                                <td>${video.duration}</td>
+                                <td>${video.channel}</td>
+                                <td>${video.views}</td>
+                                <td><button onclick="saveWatchedVideo('${video.videoId}', '${video.title}')">학습하기</button></td>
+                            </tr>
+                        `;
+                        container.append(videoElement);
+                    });
+                } else {
+                    alert('시청 기록을 불러오는 중 문제가 발생했습니다.');
+                }
+            });
+
+            // 로그인 상태 확인
+            $.get('/check-login', function (data) {
+                if (data.loggedIn) {
+                    $('#login-link').hide();
+                    $('#signup-link').hide();
+                    $('#logout-link').show();
+                } else {
+                    $('#login-link').show();
+                    $('#signup-link').show();
+                    $('#logout-link').hide();
+                }
+            });
+
+            // 로그아웃 처리
+            $('#logout-link').on('click', function (e) {
+                e.preventDefault();
+                $.get('/logout', function (data) {
+                    if (data.success) {
+                        alert('로그아웃 되었습니다.');
+                        location.reload();
+                    }
+                });
+            });
+        });
+
+
+
+
+
+
+        // 유튜브 영상을 시청할 때마다 해당 영상을 시청 기록에 저장
+        function saveWatchedVideo(videoId, title) {
+            $.post('/save-watched-video', { videoId, title }, function (data) {
+                if (!data.success) {
+                    alert('시청 기록 저장 중 문제가 발생했습니다.');
+                }
+            });
+        }
+
+        // 추천 영상 가져오기
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('analysis.json')
+                .then(response => response.json())
+                .then(data => {
+                    const recommendedResultsContainer = document.getElementById('recommended-results');
+                    recommendedResultsContainer.innerHTML = '';
+
+                    data.recommendations.forEach(result => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td><img src="${result.thumbnail}" alt="썸네일" width="120"></td>
+                            <td>${result.title}</td>
+                            <td>${result.duration}</td>
+                            <td>${result.channel}</td>
+                            <td>${result.views}</td>
+                            <td><button class="learn-btn">클릭</button></td>
+                        `;
+                        recommendedResultsContainer.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching recommendations:', error));
+        });
+    </script>
+<div class="h1-container">
+    <h1>학습중인 영상</h1>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>썸네일</th>
+            <th>영상제목</th>
+            <th>영상길이</th>
+            <th>채널명</th>
+            <th>조회수</th>
+            <th>학습하기</th>
+        </tr>
+        
+    </thead>
+    <tbody id="learning-results">
+
+
+
+        <!-- 학습중인 영상 목록 -->
+    </tbody>
+</table>
+    <div class="recommender-section">
+        <div class="recommender-h1-container">
+            <h1>추천 영상</h1>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>썸네일</th>
+                    <th>영상제목</th>
+                    <th>영상길이</th>
+                    <th>채널명</th>
+                    <th>조회수</th>
+                    <th>학습하기</th>
+                </tr>
+            </thead>
+            <tbody id="recommended-results">
+                <!-- 추천 영상 목록 -->
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+
+<script>
+    {
+    "learning" [
+        {
+            "thumbnail": "path/to/thumbnail1.jpg",
+            "title": "파이썬 기초 강의",
+            "duration": "15:00",
+            "channel": "코딩유튜버",
+            "views": "50,000"
+        },
+        {
+            "thumbnail": "path/to/thumbnail2.jpg",
+            "title": "자바스크립트 강의",
+            "duration": "30:29",
+            "channel": "자바 프로그래밍마스터",
+            "views": "70,000"
+        }
+    ]
+}
+
+</script>
+</html>
